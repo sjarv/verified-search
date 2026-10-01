@@ -1,5 +1,17 @@
 import Mathlib
 
+/-! Specification for binary search. This file defines what it means for a
+search function to be correct, without reference to the particular search function.
+Correctness has two halves, IsSound and IsCorrect.
+
+* IsSound: if f returns an index, the target is actually there; holds for any array,
+sorted or not.
+* IsComplete: if f returns 'none', the target is actually absent; requires sortedness.
+
+Sortedness itself is defined in two ways, which are equivalent; the 'Fin' version
+makes sortedness decidable.
+-/
+
 namespace VerifiedSearch
 
 /-- An array is sorted if every earlier index holds a value at most that of
